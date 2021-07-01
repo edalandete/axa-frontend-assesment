@@ -1,0 +1,4 @@
+export default {
+  LOAD_ORCS: 'LOAD_ORCS',
+  LOAD_ORCS_ERROR: 'LOAD_ORCS_ERROR'
+};
