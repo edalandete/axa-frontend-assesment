@@ -8,7 +8,20 @@ function OrcsList({ orcs, dispatch }) {
     if (!orcs.length) dispatch(loadOrcs());
   }, []);
   return (
-    <h1>Orcs List</h1>
+    <main>
+      <h1>Orcs List</h1>
+      <ul className="orcs-list">
+        {
+              orcs && orcs.map((orc) => (
+                <li>
+                  <img src={orc.thumbnail} alt={orc.name} />
+                  <p>{orc.name}</p>
+
+                </li>
+              ))
+          }
+      </ul>
+    </main>
   );
 }
 
