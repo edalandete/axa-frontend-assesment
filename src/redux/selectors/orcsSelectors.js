@@ -1,7 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-const getOrc = (orcs, orcId) => createSelector(
+export const getOrcById = (orcs, orcId) => createSelector(
   () => orcs.find((orc) => orcId === `${orc.id}`)
 );
 
-export default getOrc;
+export const getOrcsByName = (orcs, orcsFriends) => createSelector(
+  () => orcsFriends.map((orc) => orcs.find(({ name }) => name === orc))
+);
