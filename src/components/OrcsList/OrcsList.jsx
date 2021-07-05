@@ -16,7 +16,7 @@ function OrcsList({ orcs, dispatch }) {
         {
               orcs && orcs.map((orc) => (
                 <li className="orcs-list__item" key={orc.id}>
-                  <Link to={`/${orc.id}`}>
+                  <Link to={`/${orc.id}`} data-testid={orc.id}>
                     <div>
                       <img src={orc.thumbnail} alt={orc.name} className="thumbnail" />
                     </div>
