@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
+import Router from 'react-router';
+
 import OrcsList from './OrcsList';
 import { render, screen, fireEvent } from '../../assets/test-utils';
 import actionTypes from '../../redux/actions/actionTypes';
@@ -33,6 +35,10 @@ describe('Given a TasksList component', () => {
           name: 'Urun'
         }]
       });
+
+      jest.spyOn(Router, 'useParams').mockReturnValue({ id: '123' });
+
+      global.window = { location: { pathname: '/123' } };
 
       render(<OrcsList />, { initialState });
 
