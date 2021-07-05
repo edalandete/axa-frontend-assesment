@@ -4,15 +4,13 @@ import { useParams, useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './orcDetail.scss';
+import { getOrcById, getSelectedOrcFriends } from '../../redux/selectors/orcsSelector';
 
 function OrcDetail({ orcs }) {
   const history = useHistory();
   const { id } = useParams();
-  const selectedOrc = orcs.find((orc) => id === `${orc.id}`);
-  const orcFriends = selectedOrc.friends.length
-    ? selectedOrc.friends.map((orc) => orcs.find(({ name }) => name === orc))
-    : [];
-
+  const selectedOrc = getOrcById(orcs, id);
+  const orcFriends = getSelectedOrcFriends(selectedOrc, orcs);
   return (
     <main>
       <h1>
