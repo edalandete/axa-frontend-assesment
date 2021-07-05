@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import loadOrcs from '../../redux/actions/actionCreators';
@@ -15,11 +16,12 @@ function OrcsList({ orcs, dispatch }) {
         {
               orcs && orcs.map((orc) => (
                 <li className="orcs-list__item" key={orc.id}>
-                  <div>
-                    <img src={orc.thumbnail} alt={orc.name} className="thumbnail" />
-                  </div>
-                  <p>{orc.name}</p>
-
+                  <Link to={`/${orc.id}`}>
+                    <div>
+                      <img src={orc.thumbnail} alt={orc.name} className="thumbnail" />
+                    </div>
+                    <p>{orc.name}</p>
+                  </Link>
                 </li>
               ))
           }
