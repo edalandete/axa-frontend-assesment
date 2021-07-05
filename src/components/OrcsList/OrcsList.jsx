@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import loadOrcs from '../../redux/actions/actionCreators';
+import './orcsList.scss';
 
 function OrcsList({ orcs, dispatch }) {
   useEffect(() => {
@@ -13,8 +14,10 @@ function OrcsList({ orcs, dispatch }) {
       <ul className="orcs-list">
         {
               orcs && orcs.map((orc) => (
-                <li>
-                  <img src={orc.thumbnail} alt={orc.name} />
+                <li className="orcs-list__item">
+                  <div>
+                    <img src={orc.thumbnail} alt={orc.name} className="thumbnail" />
+                  </div>
                   <p>{orc.name}</p>
 
                 </li>
