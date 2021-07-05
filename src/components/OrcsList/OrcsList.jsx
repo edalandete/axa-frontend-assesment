@@ -14,7 +14,7 @@ function OrcsList({ orcs, dispatch }) {
       <ul className="orcs-list">
         {
               orcs && orcs.map((orc) => (
-                <li className="orcs-list__item">
+                <li className="orcs-list__item" key={orc.id}>
                   <div>
                     <img src={orc.thumbnail} alt={orc.name} className="thumbnail" />
                   </div>
