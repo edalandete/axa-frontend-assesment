@@ -1,22 +1,18 @@
-/* eslint-disable no-debugger */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import PropTypes from 'prop-types';
-import { connect, useSelector } from 'react-redux';
-import { getOrcById, getOrcsByName } from '../../redux/selectors/orcsSelectors';
+import { connect } from 'react-redux';
 import './orcDetail.scss';
 
 function OrcDetail({ orcs }) {
-  // const history = useHistory();
+  const history = useHistory();
   const { id } = useParams();
-  const selectedOrc = useSelector(getOrcById(orcs, id));
-  debugger;
+  const selectedOrc = orcs.find((orc) => id === `${orc.id}`);
   const orcFriends = selectedOrc.friends.length
-    ? useSelector(getOrcsByName(orcs, selectedOrc.friends))
+    ? selectedOrc.friends.map((orc) => orcs.find(({ name }) => name === orc))
     : [];
 
-  console.log('orc friends', orcFriends);
   return (
     <main>
       <h1>
@@ -77,7 +73,7 @@ function OrcDetail({ orcs }) {
 
             </p>
           </li>
-          {/* <li className="data__item">
+          <li className="data__item">
             <p>
               <span className="badge">Friends: </span>
               {orcFriends.length ? orcFriends.map((friend) => (
@@ -89,13 +85,10 @@ function OrcDetail({ orcs }) {
                 : <span>No friends</span>}
 
             </p>
-          </li> */}
-          <Link to="/633">
-            {' ir ya'}
-          </Link>
+          </li>
         </ul>
       </div>
-      {/* <button type="button" onClick={history.goBack}> go back </button> */}
+      <button type="button" onClick={history.goBack}> go back </button>
     </main>
   );
 }
