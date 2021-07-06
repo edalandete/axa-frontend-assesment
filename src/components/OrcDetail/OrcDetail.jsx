@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useParams, useHistory } from 'react-router';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './orcDetail.scss';
 import { getOrcById, getSelectedOrcFriends } from '../../redux/selectors/orcsSelector';
 
-function OrcDetail({ orcs }) {
+function OrcDetail() {
+  const orcs = useSelector((store) => store.orcs);
   const history = useHistory();
   const { id } = useParams();
   const selectedOrc = getOrcById(orcs, id);
@@ -91,15 +91,4 @@ function OrcDetail({ orcs }) {
   );
 }
 
-OrcDetail.propTypes = {
-  orcs: PropTypes.arrayOf(
-    PropTypes.shape({})
-  ).isRequired
-};
-
-function mapStateToProps({ orcs }) {
-  return {
-    orcs
-  };
-}
-export default connect(mapStateToProps)(OrcDetail);
+export default OrcDetail;

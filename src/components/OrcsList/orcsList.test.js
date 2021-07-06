@@ -7,7 +7,7 @@ import { render, screen, fireEvent } from '../../assets/test-utils';
 import actionTypes from '../../redux/actions/actionTypes';
 
 import
-loadOrcs from '../../redux/actions/actionCreators';
+{ loadOrcs } from '../../redux/actions/actionCreators';
 
 jest.mock('../../redux/actions/actionCreators');
 
@@ -25,6 +25,10 @@ describe('Given a TasksList component', () => {
       orcs: [{
         id: '123',
         name: 'Urun'
+      }],
+      filteredOrcs: [{
+        id: '123',
+        name: 'Urun'
       }]
     };
     test('Should render Urun', () => {
@@ -33,12 +37,12 @@ describe('Given a TasksList component', () => {
         orcs: [{
           id: '123',
           name: 'Urun'
+        }],
+        filteredOrcs: [{
+          id: '123',
+          name: 'Urun'
         }]
       });
-
-      jest.spyOn(Router, 'useParams').mockReturnValue({ id: '123' });
-
-      global.window = { location: { pathname: '/123' } };
 
       render(<OrcsList />, { initialState });
 
@@ -53,6 +57,10 @@ describe('Given a TasksList component', () => {
           name: 'Urun'
         }]
       });
+
+      jest.spyOn(Router, 'useParams').mockReturnValue({ id: '123' });
+
+      global.window = { location: { pathname: '/123' } };
 
       render(<OrcsList />, { initialState });
       fireEvent.click(screen.getByTestId('123'));
