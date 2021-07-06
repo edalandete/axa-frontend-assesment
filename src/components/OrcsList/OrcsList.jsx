@@ -1,20 +1,48 @@
-import React, { useEffect } from 'react';
+import React, {
+  useEffect, useState
+} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import loadOrcs from '../../redux/actions/actionCreators';
+import { loadOrcs, filterOrcs } from '../../redux/actions/actionCreators';
 import './orcsList.scss';
 
-function OrcsList({ orcs, dispatch }) {
+function OrcsList() {
+  const [searchValue, setSearchValue] = useState('');
+  const dispatch = useDispatch();
+  const orcs = useSelector((store) => store.orcs);
+  const filteredOrcs = useSelector((store) => store.filteredOrcs);
+
   useEffect(() => {
-    if (!orcs.length) dispatch(loadOrcs());
+    if (!orcs.length) {
+      dispatch(loadOrcs());
+    }
   }, []);
+
+  const handleInputChange = (event) => setSearchValue(event.target.value);
+
+  const filterValues = () => dispatch(filterOrcs(orcs, searchValue));
+
+  const clearFilter = () => dispatch(filterOrcs(orcs));
+
   return (
     <main>
       <h1>Orcs List</h1>
+      <section className="filter-form">
+        <input
+          type="text"
+          name="filterText"
+          className="filter-text"
+          placeholder="Search"
+          onChange={handleInputChange}
+          value={searchValue}
+        />
+        <button type="button" onClick={filterValues} className="buttons buttons--search">Search</button>
+        <button type="button" onClick={clearFilter} className="buttons buttons--clear">Clear</button>
+      </section>
+
       <ul className="orcs-list">
         {
-              orcs && orcs.map((orc) => (
+              filteredOrcs && filteredOrcs.map((orc) => (
                 <li className="orcs-list__item" key={orc.id}>
                   <Link to={`/${orc.id}`} data-testid={orc.id}>
                     <div>
@@ -30,16 +58,4 @@ function OrcsList({ orcs, dispatch }) {
   );
 }
 
-OrcsList.propTypes = {
-  orcs: PropTypes.arrayOf(
-    PropTypes.shape({})
-  ).isRequired,
-  dispatch: PropTypes.func.isRequired
-};
-
-function mapStateToProps({ orcs }) {
-  return {
-    orcs
-  };
-}
-export default connect(mapStateToProps)(OrcsList);
+export default (OrcsList);
