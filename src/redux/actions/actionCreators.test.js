@@ -1,7 +1,7 @@
 import axios from 'axios';
 import actionTypes from './actionTypes';
 import
-loadOrcs
+{ loadOrcs }
   from './actionCreators';
 
 jest.mock('axios');
