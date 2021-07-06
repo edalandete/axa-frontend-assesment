@@ -30,13 +30,13 @@ function OrcsList() {
       <input
         type="text"
         name="filterText"
-        className="form-control filter-text"
+        className="filter-text"
         placeholder="Search"
         onChange={handleInputChange}
         value={searchValue}
       />
-      <button type="button" onClick={filterValues}>Search</button>
-      <button type="button" onClick={clearFilter}>Clear</button>
+      <button type="button" onClick={filterValues} className="buttons buttons--search">Search</button>
+      <button type="button" onClick={clearFilter} className="buttons buttons--clear">Clear</button>
 
       <ul className="orcs-list">
         {

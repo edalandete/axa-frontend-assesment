@@ -47,3 +47,13 @@ main {
         transform: scale(1.1);
     }
 }
+
+.filter-text {
+    width: 300px;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 40px;
+    background-color: rgb(238, 238, 238);
+    color: rgb(47, 47, 47);
+    margin-right: 15px;
+}
