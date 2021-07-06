@@ -27,16 +27,18 @@ function OrcsList() {
   return (
     <main>
       <h1>Orcs List</h1>
-      <input
-        type="text"
-        name="filterText"
-        className="filter-text"
-        placeholder="Search"
-        onChange={handleInputChange}
-        value={searchValue}
-      />
-      <button type="button" onClick={filterValues} className="buttons buttons--search">Search</button>
-      <button type="button" onClick={clearFilter} className="buttons buttons--clear">Clear</button>
+      <section className="filter-form">
+        <input
+          type="text"
+          name="filterText"
+          className="filter-text"
+          placeholder="Search"
+          onChange={handleInputChange}
+          value={searchValue}
+        />
+        <button type="button" onClick={filterValues} className="buttons buttons--search">Search</button>
+        <button type="button" onClick={clearFilter} className="buttons buttons--clear">Clear</button>
+      </section>
 
       <ul className="orcs-list">
         {

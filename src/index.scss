@@ -12,7 +12,7 @@ a {
 }
 
 h1 {
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 button {
@@ -46,4 +46,16 @@ button {
       background-color: rgba(31, 206, 31, 1);
 
   }
+
+  &--back {
+    align-self: flex-end;
+    background-color: rgba(15, 107, 160,0.7);
+    
+  }
+
+  &--back:hover{
+      background-color: rgba(15, 107, 160,1);
+
+  }
+
 }

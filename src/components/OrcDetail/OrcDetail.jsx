@@ -75,7 +75,7 @@ function OrcDetail({ orcs }) {
             <p>
               <span className="badge">Friends: </span>
               {orcFriends.length ? orcFriends.map((friend) => (
-                <Link to={`/${friend.id}`}>
+                <Link to={`/${friend.id}`} className="links">
                   { friend.name }
                   {' '}
                 </Link>
@@ -85,8 +85,8 @@ function OrcDetail({ orcs }) {
             </p>
           </li>
         </ul>
+        <button type="button" onClick={history.goBack} className="buttons buttons--back"> Go Back </button>
       </div>
-      <button type="button" onClick={history.goBack}> go back </button>
     </main>
   );
 }

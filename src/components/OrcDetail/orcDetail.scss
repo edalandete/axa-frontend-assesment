@@ -4,6 +4,7 @@ main {
     height: 500px;
 }
 .orc-details {
+    background-color: #e8e8e8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,4 +37,19 @@ main {
 .profile-picture {
     max-height: 200px;
     width: auto;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.badge {
+    font-weight: bolder;
+}
+
+.links {
+    color: rgba(60, 60, 160,0.7);
+
+    &:hover {
+        color: rgba(60, 60, 160,1);
+        text-decoration: underline;
+    }
 }
